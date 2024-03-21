@@ -64,8 +64,14 @@ function playGame(computerChoice, playerChoice, pcScore, playerScore) {
     
 let pcScore = {value: 0}
 let playerScore = {value: 0}
+//getting user input
 
-playGame(computerChoice,playerChoice, pcScore, playerScore)
+    let playerChoice = prompt("Enter your choice: Rock, Paper, or Scissors").toLowerCase()
+    const computerChoice = getCompChoice()
 
+    if (playerChoice != "rock" && playerChoice != 'paper' && playerChoice && "scissors") {
+        console.log("Incorrect input, please try again")
+    }
 
+    playGame(computerChoice,playerChoice, pcScore, playerScore)
 
