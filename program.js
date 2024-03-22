@@ -65,10 +65,18 @@ function playGame(playerChoice, pcScore, playerScore) {
 
     console.log("Player Score: ", playerScore)
     console.log("PC Score: ", pcScore)
+
+    displayComputerScore.textContent = `PC Score : ${pcScore.value}`
+    displayPlayerScore.textContent = `Player Score: ${playerScore.value}`
 }
     
 let pcScore = {value: 0}
 let playerScore = {value: 0}
+
+let displayComputerScore = document.querySelector('#pcScore')
+
+let displayPlayerScore = document.querySelector('#playerScore')
+
 //getting user input
 document.getElementById("rock").addEventListener('click', function () {
     playGame('rock', pcScore, playerScore)
@@ -81,14 +89,10 @@ document.getElementById("paper").addEventListener('click', function () {
 document.getElementById("scissors").addEventListener('click', function () {
     playGame('scissors', pcScore, playerScore)
 })
-//getting PC choice
 
+// const resultsDiv = document.querySelector('.results')
 
-const resultsDiv = document.querySelector('.results')
-
-const results = document.createElement('div')
-
-
+// const results = document.createElement('div')
 
 
 
