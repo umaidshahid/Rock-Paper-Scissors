@@ -45,8 +45,9 @@ function playRound (computerChoice, playerChoice) {
     }
 }
 
-function playGame(computerChoice, playerChoice, pcScore, playerScore) {
+function playGame(playerChoice, pcScore, playerScore) {
     
+    const computerChoice = getCompChoice()
     const scoreKeeper = playRound(computerChoice, playerChoice)
     if (scoreKeeper == "PC wins!") {
         console.log(scoreKeeper)
@@ -58,6 +59,10 @@ function playGame(computerChoice, playerChoice, pcScore, playerScore) {
         playerScore.value++
     }
 
+    else {
+        console.log("it's a tie!")
+    }
+
     console.log("Player Score: ", playerScore)
     console.log("PC Score: ", pcScore)
 }
@@ -65,13 +70,25 @@ function playGame(computerChoice, playerChoice, pcScore, playerScore) {
 let pcScore = {value: 0}
 let playerScore = {value: 0}
 //getting user input
+document.getElementById("rock").addEventListener('click', function () {
+    playGame('rock', pcScore, playerScore)
+})
 
-    let playerChoice = prompt("Enter your choice: Rock, Paper, or Scissors").toLowerCase()
-    const computerChoice = getCompChoice()
+document.getElementById("paper").addEventListener('click', function () {
+    playGame('paper', pcScore, playerScore)
+})
 
-    if (playerChoice != "rock" && playerChoice != 'paper' && playerChoice && "scissors") {
-        console.log("Incorrect input, please try again")
-    }
+document.getElementById("scissors").addEventListener('click', function () {
+    playGame('scissors', pcScore, playerScore)
+})
+//getting PC choice
 
-    playGame(computerChoice,playerChoice, pcScore, playerScore)
+
+const resultsDiv = document.querySelector('.results')
+
+const results = document.createElement('div')
+
+
+
+
 
