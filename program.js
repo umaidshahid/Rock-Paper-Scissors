@@ -45,33 +45,43 @@ function playRound (computerChoice, playerChoice) {
     }
 }
 
-function playGame(playerChoice, pcScore, playerScore) {
+function playGame(playerChoice) {
     
     const computerChoice = getCompChoice()
     const scoreKeeper = playRound(computerChoice, playerChoice)
     if (scoreKeeper == "PC wins!") {
         console.log(scoreKeeper)
-        pcScore.value++
+        pcScore++
     }
 
     else if (scoreKeeper == "Player wins!") {
         console.log(scoreKeeper)
-        playerScore.value++
+        playerScore++
     }
 
     else {
-        console.log("it's a tie!")
+        displayResults.textContent = 'Round Tied'
     }
 
-    console.log("Player Score: ", playerScore)
-    console.log("PC Score: ", pcScore)
 
-    displayComputerScore.textContent = `PC Score : ${pcScore.value}`
-    displayPlayerScore.textContent = `Player Score: ${playerScore.value}`
+    displayComputerScore.textContent = `PC Score : ${pcScore}`
+    displayPlayerScore.textContent = `Player Score: ${playerScore}`
+
+    if (pcScore == 5 ) {
+        displayResults.textContent = 'PC wins! Game Over'
+        pcScore = 0
+        playerScore = 0
+    }
+    
+    else if (playerScore == 5 ) {
+        displayResults.textContent = 'Player wins! Game Over'
+        pcScore = 0
+        playerScore = 0
+    }
 }
     
-let pcScore = {value: 0}
-let playerScore = {value: 0}
+let pcScore = 0
+let playerScore = 0
 
 let displayComputerScore = document.querySelector('#pcScore')
 
@@ -79,20 +89,25 @@ let displayPlayerScore = document.querySelector('#playerScore')
 
 //getting user input
 document.getElementById("rock").addEventListener('click', function () {
-    playGame('rock', pcScore, playerScore)
+    playGame('rock')
 })
 
 document.getElementById("paper").addEventListener('click', function () {
-    playGame('paper', pcScore, playerScore)
+    playGame('paper')
 })
 
 document.getElementById("scissors").addEventListener('click', function () {
-    playGame('scissors', pcScore, playerScore)
+    playGame('scissors')
 })
 
-// const resultsDiv = document.querySelector('.results')
 
-// const results = document.createElement('div')
+
+const divResults = document.querySelector('#results')
+const displayResults = document.createElement('div')
+divResults.appendChild(displayResults)
+
+
+
 
 
 
